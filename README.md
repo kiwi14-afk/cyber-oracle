@@ -2,6 +2,7 @@
 
 > 把一个月账单算成一卦：大学生消费人格与生存预测看板。
 > 全国高校 Vibe Coding 开发挑战赛 · 主题「重塑范式」· 推荐方向 6：校园 / 垂直社区全栈 MVP 平台。
+> 参赛组别：**A 组（985 / 211 院校组）**
 > 仓库地址：<https://github.com/kiwi14-afk/cyber-oracle>（提交版本 tag：`v1.0-submit`）
 
 上传一份支付宝 / 微信导出的 CSV，浏览器本地解析后，用六个真实财务指标起一卦：
@@ -226,7 +227,7 @@ parse → categories → ledger → runway ─┐
 | 细粒度 Git 提交历史 | `git log`：25+ 次提交，按「一次对话 / 一个模块」切分，禁止 initial commit 一把梭 |
 | Prompt 历史快照（≥3 条核心迭代） | [`docs/prompts/`](docs/prompts/)：账单解析、六爻判定、AI 卦辞意图控制三条完整 Prompt 链 |
 | README 10 分钟复现指南 | 本文件第 1 节 |
-| 演示视频 5–8 分钟（含 ≥2 分钟 AI 协同） | [`docs/演示视频脚本.md`](docs/演示视频脚本.md)：分镜、口播、录屏操作与时间码 |
+| 演示视频 5–8 分钟（含 ≥2 分钟 AI 协同） | [`docs/media/赛博卦账-演示.mp4`](docs/media/赛博卦账-演示.mp4)（5:59，AI 段 2:28）+ 同名字幕 `.srt`；分镜与口播见 [`docs/演示视频脚本.md`](docs/演示视频脚本.md) |
 | 技术文档 PDF ≤30 页 | [`docs/技术文档.pdf`](docs/技术文档.pdf)（源文件 `docs/技术文档.md`） |
 | 提交自查 | [`docs/提交自查清单.md`](docs/提交自查清单.md) |
 

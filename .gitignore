@@ -25,3 +25,6 @@ Thumbs.db
 # 本地账单数据（隐私红线：任何时候都不得提交真实账单）
 *.private.*
 /data/private/
+
+# 构建期从 samples/ 同步过来的样例副本（源头在 samples/，不入库两份）
+/public/samples/

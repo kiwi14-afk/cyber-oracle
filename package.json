@@ -1,0 +1,33 @@
+{
+  "name": "cyber-oracle",
+  "version": "0.1.0",
+  "private": true,
+  "description": "赛博卦账 —— 把一个月账单算成一卦：大学生消费人格与生存预测看板",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "echarts": "^5.6.0",
+    "idb": "^8.0.2",
+    "next": "^15.5.0",
+    "papaparse": "^5.5.3",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "@types/papaparse": "^5.3.15",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.9.0",
+    "vitest": "^2.1.9"
+  }
+}

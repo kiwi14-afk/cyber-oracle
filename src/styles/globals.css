@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =========================================================================
+   设计语言：墨底 / 朱砂 / 铜金
+   - 底色为近黑墨色，营造「深夜对着账单算命」的私密感
+   - 朱砂红用于警示与「凶」的信号，铜金用于「吉」与强调，薄荷青用于数据正向
+   - 全部字体走系统字体栈，不引入任何在线字体，保证离线复现一致
+   ========================================================================= */
+
+:root {
+  --ink-900: #07080b;
+  --ink-800: #0c0e13;
+  --ink-700: #12151c;
+  --ink-600: #191d26;
+  --line: rgba(243, 238, 227, 0.08);
+  --line-strong: rgba(243, 238, 227, 0.16);
+  --paper-100: #f3eee3;
+  --paper-300: #cfc6b6;
+  --paper-500: #9c9486;
+  --cinnabar: #e2453c;
+  --brass: #e4b457;
+  --jade: #38d9a9;
+  --radius: 18px;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--ink-900);
+  color: var(--paper-100);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  min-height: 100vh;
+  /* 极淡的径向光晕 + 细密网格，形成「宣纸压暗 + 电路板」的混合质感 */
+  background-image:
+    radial-gradient(900px 480px at 12% -8%, rgba(228, 180, 87, 0.10), transparent 62%),
+    radial-gradient(760px 420px at 88% 4%, rgba(226, 69, 60, 0.08), transparent 60%),
+    linear-gradient(rgba(243, 238, 227, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(243, 238, 227, 0.022) 1px, transparent 1px);
+  background-size: auto, auto, 44px 44px, 44px 44px;
+  background-attachment: fixed;
+}
+
+::selection {
+  background: rgba(228, 180, 87, 0.32);
+  color: var(--paper-100);
+}
+
+/* 统一滚动条，避免默认亮色滚动条破坏暗色界面 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(243, 238, 227, 0.14);
+  border-radius: 8px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(243, 238, 227, 0.26);
+  background-clip: content-box;
+}
+
+@layer components {
+  .panel {
+    @apply rounded-xl2 border bg-ink-700/70 shadow-panel backdrop-blur-sm;
+    border-color: var(--line);
+  }
+
+  .panel-flat {
+    @apply rounded-xl2 border bg-ink-800/60;
+    border-color: var(--line);
+  }
+
+  .hairline {
+    border-color: var(--line);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn text-ink-900;
+    background: linear-gradient(135deg, var(--brass) 0%, #f0cd84 55%, var(--brass) 100%);
+    box-shadow: 0 10px 26px -14px rgba(228, 180, 87, 0.75);
+  }
+  .btn-primary:hover {
+    filter: brightness(1.06);
+    transform: translateY(-1px);
+  }
+  .btn-primary:active {
+    transform: translateY(0);
+  }
+  .btn-primary:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    filter: none;
+  }
+
+  .btn-ghost {
+    @apply btn text-paper-300 border;
+    border-color: var(--line-strong);
+    background: rgba(243, 238, 227, 0.03);
+  }
+  .btn-ghost:hover {
+    color: var(--paper-100);
+    border-color: rgba(243, 238, 227, 0.3);
+    background: rgba(243, 238, 227, 0.07);
+  }
+
+  .label {
+    @apply text-[11px] uppercase tracking-[0.18em] text-paper-500;
+  }
+
+  .num {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+  }
+
+  /* 卦象芯片：用于人格标签、分类标签 */
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-xs;
+    border-color: var(--line-strong);
+    background: rgba(243, 238, 227, 0.04);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .text-gradient-brass {
+    background: linear-gradient(100deg, #f6dda6, #e4b457 45%, #b9822a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .grain {
+    position: relative;
+  }
+  .grain::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.12) 0.5px, transparent 0.5px);
+    background-size: 4px 4px;
+    mix-blend-mode: overlay;
+    border-radius: inherit;
+  }
+}
+
+/* 动效偏好：尊重系统「减少动效」设置 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

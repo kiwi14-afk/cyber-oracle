@@ -9,7 +9,8 @@
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "inspect": "vite-node scripts/inspect-bill.ts"
   },
   "dependencies": {
     "echarts": "^5.6.0",
@@ -28,6 +29,7 @@
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
     "typescript": "^5.9.0",
+    "vite-node": "^6.0.0",
     "vitest": "^2.1.9"
   }
 }

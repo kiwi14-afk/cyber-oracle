@@ -28,3 +28,7 @@ Thumbs.db
 
 # 构建期从 samples/ 同步过来的样例副本（源头在 samples/，不入库两份）
 /public/samples/
+
+# TypeScript 增量编译缓存
+*.tsbuildinfo
+

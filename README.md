@@ -222,7 +222,7 @@ parse → categories → ledger → runway ─┐
 
 | 赛题要求 | 本仓库对应位置 |
 | --- | --- |
-| 细粒度 Git 提交历史 | `git log`：25 次提交，按「一次对话 / 一个模块」切分，禁止 initial commit 一把梭 |
+| 细粒度 Git 提交历史 | `git log`：25+ 次提交，按「一次对话 / 一个模块」切分，禁止 initial commit 一把梭 |
 | Prompt 历史快照（≥3 条核心迭代） | [`docs/prompts/`](docs/prompts/)：账单解析、六爻判定、AI 卦辞意图控制三条完整 Prompt 链 |
 | README 10 分钟复现指南 | 本文件第 1 节 |
 | 演示视频 5–8 分钟（含 ≥2 分钟 AI 协同） | [`docs/演示视频脚本.md`](docs/演示视频脚本.md)：分镜、口播、录屏操作与时间码 |

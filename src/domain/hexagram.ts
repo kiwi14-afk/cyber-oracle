@@ -113,7 +113,7 @@ export const LINE_META = [
   },
 ] as const;
 
-const THRESHOLDS = {
+export const THRESHOLDS = {
   essentialShare: 0.6,
   emotionalShare: 0.2,
   nightShare: 0.12,

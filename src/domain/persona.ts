@@ -7,7 +7,7 @@
  */
 
 import { formatCents } from "./parse/values";
-import { LINE_META } from "./hexagram";
+import { LINE_META, THRESHOLDS } from "./hexagram";
 import type { Hexagram, Ledger, Persona } from "./types";
 
 interface PersonaDef {
@@ -160,11 +160,14 @@ function pickDominant(ledger: Ledger, lines: Hexagram["lines"]): number {
     .reduce((a, c) => a + c.cents, 0);
 
   const pain: Record<number, number> = {
-    1: Math.round(ledger.expenseCents * Math.max(0, 0.6 - ledger.essentialShare)),
+    1: Math.round(ledger.expenseCents * Math.max(0, THRESHOLDS.essentialShare - ledger.essentialShare)),
     2: emotional,
     3: ledger.nightCents,
     4: ledger.subscription.cents,
-    5: ledger.incomeCents > 0 ? Math.max(0, Math.round(ledger.incomeCents * 0.15) - ledger.netCents) : 0,
+    5:
+      ledger.incomeCents > 0
+        ? Math.max(0, Math.round(ledger.incomeCents * THRESHOLDS.savingRate) - ledger.netCents)
+        : 0,
     6: 0,
   };
 

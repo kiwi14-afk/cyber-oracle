@@ -29,6 +29,8 @@ function buildOption(runway: Runway): Record<string, unknown> {
 
   const axisLabelColor = "#9C9486";
   const splitColor = "rgba(243,238,227,0.08)";
+  // 纵轴必须把预算线包进视野，否则「死期」这条最重要的线会被自动缩放裁掉
+  const axisMax = Math.max(runway.budgetCents, runway.projectedTotalCents, ...runway.points.map((p) => p.projectedCents)) / 100 * 1.08;
 
   return {
     backgroundColor: "transparent",
@@ -79,6 +81,7 @@ function buildOption(runway: Runway): Record<string, unknown> {
     yAxis: {
       type: "value",
       name: "元",
+      max: Number.isFinite(axisMax) ? Math.ceil(axisMax / 500) * 500 : undefined,
       nameTextStyle: { color: axisLabelColor, fontSize: 10, padding: [0, 0, 0, -18] },
       axisLine: { show: false },
       splitLine: { lineStyle: { color: splitColor } },
@@ -159,6 +162,7 @@ export function RunwayPanel({ runway }: { runway: Runway }) {
 
       chart = core.init(ref.current, undefined, { renderer: "canvas" }) as unknown as ChartLike;
       chart.setOption(buildOption(runway));
+      (window as unknown as { __runwayChart?: unknown }).__runwayChart = chart;
 
       observer = new ResizeObserver(() => chart?.resize());
       observer.observe(ref.current);

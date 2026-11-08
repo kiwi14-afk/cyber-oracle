@@ -35,15 +35,15 @@ export function CategoryPanel({ ledger }: { ledger: Ledger }) {
                   {c.essential ? <span className="text-[10px] text-jade-400/70">必需</span> : null}
                   <span className="text-[10px] text-paper-600">{c.count} 笔</span>
                 </span>
-                <span className="num shrink-0 text-xs text-paper-100">
+                <span className="num shrink-0 whitespace-nowrap text-xs text-paper-100">
                   {formatCents(c.cents)}
-                  <span className="ml-1.5 text-[10px] text-paper-500">{(c.share * 100).toFixed(1)}%</span>
+                  <span className="ml-2 text-[10px] text-paper-500">{(c.share * 100).toFixed(1)}%</span>
                 </span>
               </div>
               <div className="h-[5px] w-full overflow-hidden rounded-full bg-paper-100/[0.06]">
                 <div
-                  className={`h-full rounded-full ${tone}`}
-                  style={{ width: `${Math.max(2, (c.cents / max) * 100)}%`, animation: "sweep 1.6s cubic-bezier(0.16,1,0.3,1) both" }}
+                  className={`h-full origin-left rounded-full ${tone}`}
+                  style={{ width: `${Math.max(2, (c.cents / max) * 100)}%`, animation: "growX 0.9s cubic-bezier(0.16,1,0.3,1) both" }}
                 />
               </div>
             </div>

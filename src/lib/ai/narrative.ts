@@ -29,7 +29,9 @@ export function localNarrative(p: OraclePayload): Narrative {
 
   // ② 最疼的一爻
   if (worst) {
-    paragraphs.push(`${worst.position}是这一卦里最先开裂的地方：${worst.text}这一爻不补，其它爻补了也会漏回去。`);
+    // 爻辞本身以「二爻开裂。」开头，这里剥掉第一句，避免和前缀重复
+    const detail = worst.text.replace(/^[^。]*。/, "");
+    paragraphs.push(`${worst.position}是这一卦里最先开裂的地方。${detail}这一爻不补，其它爻补了也会漏回去。`);
   } else if (p.hexagram.id !== 0) {
     paragraphs.push(
       `六爻皆阳，取象「${p.hexagram.name}」。这个月的账没有明显缺口，支出 ${p.expense}、收入 ${p.income}、结余率 ${p.savingRate}。真正要防的是「觉得没事」之后的松懈，不是超支本身。`,

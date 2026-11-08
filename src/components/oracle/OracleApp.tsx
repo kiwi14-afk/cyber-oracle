@@ -18,6 +18,7 @@ import { parseBillBuffer, BillParseError } from "@/domain/parse/csv";
 import { formatCents } from "@/domain/parse/values";
 import { toPayload } from "@/lib/ai/payload";
 import { BillDropzone, type SampleOption } from "./BillDropzone";
+import { HexGlyph } from "./HexGlyph";
 import { HexagramPanel } from "./HexagramPanel";
 import { RunwayPanel } from "./RunwayPanel";
 import { CategoryPanel } from "./CategoryPanel";
@@ -270,13 +271,7 @@ export function OracleApp() {
       {/* 卦象主视觉 */}
       <div className="grid gap-6 lg:grid-cols-[1.3fr_1fr]">
         <div className="flex items-start gap-5">
-          <div
-            className="select-none font-serif leading-none text-brass-400"
-            style={{ fontSize: "76px", textShadow: "0 0 40px rgba(228,180,87,0.25)" }}
-            aria-hidden="true"
-          >
-            {hexagram.symbol}
-          </div>
+          <HexGlyph lines={hexagram.lines} />
           <div className="min-w-0">
             <div className="label mb-1">
               第 {hexagram.id} 卦 · {hexagram.upper}上{hexagram.lower}下

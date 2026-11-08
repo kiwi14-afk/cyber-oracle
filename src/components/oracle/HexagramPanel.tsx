@@ -18,7 +18,7 @@ function Bar({ yang, index }: { yang: boolean; index: number }) {
     return (
       <div className="flex-1 overflow-hidden rounded-[3px] bg-ink-600">
         <div
-          className="h-[10px] w-full rounded-[3px] opacity-0"
+          className="h-[10px] w-full rounded-[3px]"
           style={{
             background: "linear-gradient(90deg, #8a6320, #E4B457 35%, #f2d18d 50%, #E4B457 65%, #8a6320)",
             boxShadow: "0 0 18px -6px rgba(228,180,87,0.6)",

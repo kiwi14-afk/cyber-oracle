@@ -93,7 +93,7 @@ export function NarrativePanel({ payload, onModeChange }: Props) {
       <SectionHead
         index="04"
         title="卦辞"
-        hint={showingAi ? "模型正在按卦案讲解" : mode === "pending" ? "正在接通模型" : "本地确定性文案"}
+        hint={showingAi ? "模型正在按卦案讲解" : mode === "pending" ? "正在接通模型" : "四段结构 · 断语 / 漏点 / 燃尽 / 动作"}
         right={
           <div className="flex items-center gap-2">
             <Chip tone={showingAi ? "brass" : "neutral"}>

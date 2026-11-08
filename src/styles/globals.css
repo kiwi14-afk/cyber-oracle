@@ -168,6 +168,38 @@ body {
   }
 }
 
+/* 组件内联 style 里按名字引用动画，因此这里直接定义 @keyframes，
+   不依赖 Tailwind 是否扫描到 animate-* 工具类（否则会出现「动画名不存在 → 元素停在 opacity:0」） */
+@keyframes riseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes growX {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 /* 动效偏好：尊重系统「减少动效」设置 */
 @media (prefers-reduced-motion: reduce) {
   *,

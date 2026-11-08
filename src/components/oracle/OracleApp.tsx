@@ -12,7 +12,7 @@
  */
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { OracleResult, ParsedBill } from "@/domain/types";
+import type { HexLine, OracleResult, ParsedBill } from "@/domain/types";
 import { buildOracle } from "@/domain/oracle";
 import { parseBillBuffer, BillParseError } from "@/domain/parse/csv";
 import { formatCents } from "@/domain/parse/values";
@@ -28,6 +28,24 @@ import { ChatPanel } from "./ChatPanel";
 import { Chip, Metric, Panel } from "@/components/ui/atoms";
 
 type Stage = "landing" | "parsing" | "board";
+
+/** 首页右上角的装饰卦：乾 / 坤 / 既济。自绘而不是用 Unicode 卦符，避免系统字体缺字 */
+function decorLines(shape: boolean[]): HexLine[] {
+  return shape.map((yang, i) => ({
+    index: (i + 1) as HexLine["index"],
+    yang,
+    position: "",
+    metric: "",
+    display: "",
+    rule: "",
+    text: "",
+  }));
+}
+const DECOR_SHAPES = [
+  [true, true, true, true, true, true],
+  [false, false, false, false, false, false],
+  [true, false, true, false, true, false],
+];
 
 const PARSE_STEPS = ["读取文件", "识别编码", "匹配表头", "清洗流水", "起卦"];
 
@@ -179,7 +197,11 @@ export function OracleApp() {
             </p>
           </div>
           <div className="hidden shrink-0 text-right sm:block">
-            <div className="font-serif text-[13px] tracking-[0.3em] text-paper-600">䷀ ䷁ ䷂ ䷃</div>
+            <div className="flex items-center justify-end gap-2 opacity-90">
+              {DECOR_SHAPES.map((shape, i) => (
+                <HexGlyph key={i} lines={decorLines(shape)} height={34} />
+              ))}
+            </div>
             <div className="mt-2 text-[10px] text-paper-600">六十四卦 · 全部可复算</div>
           </div>
         </div>
